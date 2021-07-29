@@ -33,8 +33,6 @@ let badOS = { fatalError("unsupported OS") }()
 #if os(Android)
 let INADDR_ANY = UInt32(0) // #define INADDR_ANY ((unsigned long int) 0x00000000)
 internal typealias in_port_t = UInt16
-let getifaddrs: @convention(c) (UnsafeMutablePointer<UnsafeMutablePointer<ifaddrs>?>?) -> CInt = android_getifaddrs
-let freeifaddrs: @convention(c) (UnsafeMutablePointer<ifaddrs>?) -> Void = android_freeifaddrs
 extension ipv6_mreq { // http://lkml.iu.edu/hypermail/linux/kernel/0106.1/0080.html
     init (ipv6mr_multiaddr: in6_addr, ipv6mr_interface: UInt32) {
         self.init()
